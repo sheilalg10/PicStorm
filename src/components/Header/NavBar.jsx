@@ -14,10 +14,10 @@ const NavBar = () => {
           </div>
           <div className="nav-actions">
             <div className="nav-icon">
-              <Search size={16} /> Search
+              <Search size={18} /> Search
             </div>
             <div className="nav-icon">
-              <Camera size={16} /> My Photos
+              <Camera size={18} /> My Photos
             </div>
           </div>
         </nav>

@@ -29,11 +29,12 @@
   display: flex;
   align-items: center;
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 2rem;
+  font-family: $f_Dongle;
 }
 
 .logo-img {
-  height: 28px;
+  height: 30px;
   margin-right: 0.5rem;
 }
 
@@ -48,6 +49,9 @@
   gap: 0.4rem;
   cursor: pointer;
   transition: opacity 0.2s ease;
+  font-family: $f_Dongle;
+  font-size: 1.4rem;
+  // font-weight: bold;
 }
 
 .nav-icon:hover {
@@ -57,7 +61,9 @@
 
 .wave-text {
   text-align: left;
-  margin-bottom: 6em;
+  margin-bottom: 1.5em;
+  font-family: $f_DoppioOne;
+  font-size: 3em;
 }
 
 .wave-text h1 {
