@@ -3,9 +3,7 @@
   margin: 0;
   padding: 0;
 }
-body {
-  min-width: 320px;
-}
 
-@import "Variables";
-@import "NavBar"
+
+@import "_Variables";
+@import "_Header"

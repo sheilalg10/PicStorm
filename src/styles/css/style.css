@@ -3,9 +3,6 @@
   margin: 0;
   padding: 0; }
 
-body {
-  min-width: 320px; }
-
 @font-face {
   font-family: Dongle;
   src: url(../../assets/Fonts/Dongle-Bold.ttf); }
@@ -17,63 +14,60 @@ body {
   width: 100%;
   height: 340px;
   background: linear-gradient(to bottom, #b48fe1 0%, #f7c27f 35%, #f3ea69 60%, #3ac6f2 100%);
-  clip-path: path("M0,320L80,320C160,320,320,320,480,277.3C640,235,800,149,960,122.7C1120,96,1280,128,1360,144L1440,160L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z");
-  -webkit-clip-path: path("M0,320L80,320C160,320,320,320,480,277.3C640,235,800,149,960,122.7C1120,96,1280,128,1360,144L1440,160L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z");
   overflow: hidden; }
-
-.header-content {
-  position: relative;
-  z-index: 1;
-  height: 100%;
-  padding: 1.5rem 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  color: white; }
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center; }
-
-.logo {
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-  font-size: 2rem;
-  font-family: Dongle; }
-
-.logo-img {
-  height: 30px;
-  margin-right: 0.5rem; }
-
-.nav-actions {
-  display: flex;
-  gap: 1rem; }
-
-.nav-icon {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
-  font-family: Dongle;
-  font-size: 1.4rem; }
-
-.nav-icon:hover {
-  opacity: 0.85;
-  color: #111; }
-
-.wave-text {
-  text-align: left;
-  margin-bottom: 1.5em;
-  font-family: DoppioOne;
-  font-size: 3em; }
-
-.wave-text h1 {
-  font-size: 2rem;
-  font-weight: 600;
-  margin: 0;
-  color: #111; }
+  .header-container .wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; }
+  .header-container .header-content {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    padding: 1.5rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white; }
+    .header-container .header-content .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      .header-container .header-content .navbar .logo {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        font-size: 2rem;
+        font-family: Dongle; }
+        .header-container .header-content .navbar .logo .logo-img {
+          height: 30px;
+          margin-right: 0.5rem; }
+      .header-container .header-content .navbar .nav-actions {
+        display: flex;
+        gap: 1rem; }
+        .header-container .header-content .navbar .nav-actions .nav-icon {
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+          cursor: pointer;
+          transition: opacity 0.2s ease;
+          font-family: Dongle;
+          font-size: 1.4rem; }
+    .header-container .header-content .wave-text {
+      text-align: left;
+      margin-bottom: 4em;
+      font-family: DoppioOne;
+      font-size: 1em;
+      margin-left: 1.5em; }
+      .header-container .header-content .wave-text h1 {
+        font-weight: 600;
+        margin: 0;
+        color: #111; }
+  .header-container .nav-icon:hover {
+    opacity: 0.85;
+    color: #111; }
 
 /*# sourceMappingURL=style.css.map */
