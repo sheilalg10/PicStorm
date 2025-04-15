@@ -1,20 +1,26 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPhotos, setPage, setQuery } from "../../features/photosSlice";
-import { Download, Heart, Search } from "lucide-react";
+import { Download, Heart, Search, ThumbsUp } from "lucide-react";
 import "../../styles/css/style.css";
-import { addToFavorites } from "../../features/favoritesSlice";
+import {
+  addToFavorites,
+  removeFromFavorites,
+} from "../../features/favoritesSlice";
 
 const PicStormGallery = () => {
   const dispatch = useDispatch();
   const { photos, query, page, totalPages, status, error } = useSelector(
     (state) => state.photos
   );
+  const favorites = useSelector((state) => state.favorites.items);
+
   const [searchInput, setSearchInput] = useState(query);
 
   useEffect(() => {
     dispatch(fetchPhotos({ query, page }));
   }, [dispatch, query, page]);
+
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -30,6 +36,7 @@ const PicStormGallery = () => {
 
   const popularTags = ["city", "nature", "coffee", "sea", "football"];
   const [activeTag, setActiveTag] = useState(null);
+  const [downloaded, setDownloaded] = useState(false);
 
   return (
     <div className="gallery-wrapper">
@@ -54,8 +61,8 @@ const PicStormGallery = () => {
               const isSameTag = activeTag === tag;
               const newTag = isSameTag ? null : tag;
 
-              setActiveTag(newTag); // cambia el tag activo o lo deselecciona
-              setSearchInput(newTag || ""); // limpia input si se deselecciona
+              setActiveTag(newTag);
+              setSearchInput(newTag || "");
               dispatch(setQuery(newTag || ""));
               dispatch(setPage(1));
             }}
@@ -69,39 +76,62 @@ const PicStormGallery = () => {
       {status === "failed" && <p>Error: {error}</p>}
 
       <div className="gallery-grid">
-        {photos.map(
-          (photo) =>
-            photo?.urls?.small && (
-              <div key={photo.id} className="photo-card">
-                <img
-                  src={photo.urls.small}
-                  alt={photo.alt_description || "Photo"}
-                />
-                <div className="card-overlay">
-                  <div className="icon-button">
-                    <Heart size={14} className="icon__heart" onClick={() => dispatch(addToFavorites(photo))}/>
-                    {photo.likes}
-                  </div>
-                  <a
-                    href={`${photo.links.download}?force=true`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="icon-button"
-                  >
-                    <Download size={14} />
-                    Download
-                  </a>
-                </div>
+        {photos.map((photo) => {
+          const isLiked = favorites.some((fav) => fav.id === photo.id);
+
+          return (
+            <div key={photo.id} className="photo-card">
+              <img
+                src={photo.urls.small}
+                alt={photo.alt_description || "Photo"}
+                className="photo-img"
+              />
+
+              {/* ICONOS SUPERIORES */}
+              <div className="top-icons">
+                <button className="icon-button">
+                  <Heart
+                    size={16}
+                    className={`icon__heart ${isLiked ? "active" : ""}`}
+                    fill={isLiked ? "red" : "none"}
+                    onClick={() => {
+                      if (isLiked) {
+                        dispatch(removeFromFavorites(photo.id));
+                      } else {
+                        dispatch(addToFavorites(photo));
+                      }
+                    }}
+                  />
+                </button>
               </div>
-            )
-        )}
+
+              {/* ICONOS INFERIORES */}
+              <div className="bottom-icons">
+                <div className="likes">
+                  {photo.likes}
+                  <ThumbsUp size={14} />
+                </div>
+
+                <a
+                  href={`${photo.links.download}?force=true`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="icon-button"
+                  onClick={() => setDownloaded(true)}
+                >
+                  <Download size={16} className={"icon__download"} />
+                </a>
+              </div>
+            </div>
+          );
+        })}
       </div>
 
       <div className="pagination">
         <button onClick={() => handlePageClick(page - 1)} disabled={page === 1}>
           Previous
         </button>
-        {Array.from({ length: totalPages }, (_, i) => (
+        {Array.from({ length: Math.min(totalPages, 10) }, (_, i) => (
           <button
             key={i}
             onClick={() => handlePageClick(i + 1)}
