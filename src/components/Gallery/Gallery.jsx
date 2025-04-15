@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPhotos, setPage, setQuery } from "../../features/photosSlice";
 import { Download, Heart, Search } from "lucide-react";
 import "../../styles/css/style.css";
+import { addToFavorites } from "../../features/favoritesSlice";
 
 const PicStormGallery = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const PicStormGallery = () => {
   };
 
   const popularTags = ["city", "nature", "coffee", "sea", "football"];
+  const [activeTag, setActiveTag] = useState(null);
 
   return (
     <div className="gallery-wrapper">
@@ -45,17 +47,21 @@ const PicStormGallery = () => {
 
       <div className="tags-container">
         {popularTags.map((tag) => (
-          <button
+          <p
             key={tag}
-            className="tag-button"
+            className={`tag-button ${activeTag === tag ? "active" : ""}`}
             onClick={() => {
-              setSearchInput(tag); // actualiza el input
-              dispatch(setQuery(tag)); // dispara búsqueda con el tag
-              dispatch(setPage(1)); // vuelve a página 1
+              const isSameTag = activeTag === tag;
+              const newTag = isSameTag ? null : tag;
+
+              setActiveTag(newTag); // cambia el tag activo o lo deselecciona
+              setSearchInput(newTag || ""); // limpia input si se deselecciona
+              dispatch(setQuery(newTag || ""));
+              dispatch(setPage(1));
             }}
           >
             #{tag}
-          </button>
+          </p>
         ))}
       </div>
 
@@ -73,7 +79,7 @@ const PicStormGallery = () => {
                 />
                 <div className="card-overlay">
                   <div className="icon-button">
-                    <Heart size={14} />
+                    <Heart size={14} className="icon__heart" onClick={() => dispatch(addToFavorites(photo))}/>
                     {photo.likes}
                   </div>
                   <a
