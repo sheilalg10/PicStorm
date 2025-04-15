@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box;
   margin: 0;
@@ -69,5 +70,128 @@
   .header-container .nav-icon:hover {
     opacity: 0.85;
     color: #111; }
+
+/* --- CONTENEDOR GENERAL --- */
+.gallery-wrapper {
+  padding: 1rem;
+  max-width: 1440px;
+  margin: 0 auto; }
+
+/* --- SEARCH BAR --- */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+  width: 100%;
+  max-width: 600px;
+  flex-wrap: nowrap;
+  padding: 0.5rem; }
+
+.search-bar input {
+  flex: 1;
+  padding: 0.7rem 1rem;
+  border: 2px solid #ccc;
+  border-radius: 999px 0 0 999px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease; }
+
+.search-bar input:focus {
+  border-color: #ff9900; }
+
+.search-bar button {
+  padding: 0 1rem;
+  background-color: #ff9900;
+  color: white;
+  border: none;
+  border-radius: 0 999px 999px 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease; }
+
+.search-bar button:hover {
+  background-color: #e68700; }
+
+/* --- GALERÍA TIPO MASONRY --- */
+.gallery-grid {
+  column-count: 4;
+  column-gap: 16px;
+  padding: 1rem 0; }
+
+@media (max-width: 1200px) {
+  .gallery-grid {
+    column-count: 3; } }
+@media (max-width: 768px) {
+  .gallery-grid {
+    column-count: 2; } }
+@media (max-width: 480px) {
+  .gallery-grid {
+    column-count: 1; } }
+/* --- TARJETA DE FOTO --- */
+.photo-card {
+  background-color: white;
+  margin-bottom: 16px;
+  break-inside: avoid;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease; }
+
+.photo-card:hover {
+  transform: translateY(-4px); }
+
+.photo-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px 16px 0 0; }
+
+/* --- OVERLAY DE BOTONES --- */
+.card-overlay {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+  color: white;
+  font-size: 0.8rem; }
+
+.icon-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: white;
+  text-decoration: none; }
+
+/* --- PAGINACIÓN --- */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+  gap: 0.5rem; }
+
+.pagination button {
+  padding: 0.5rem 0.75rem;
+  border: none;
+  background-color: #eee;
+  color: #333;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease; }
+
+.pagination button:hover {
+  background-color: #ddd; }
+
+.pagination button.active {
+  background-color: #ff9900;
+  color: white;
+  font-weight: bold; }
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed; }
 
 /*# sourceMappingURL=style.css.map */

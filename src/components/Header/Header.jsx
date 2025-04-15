@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../../assets/Images/Logo.png";
 import "../../styles/css/style.css";
 import { Search, Camera } from "lucide-react";
@@ -22,10 +23,14 @@ const Header = () => {
           </div>
           <div className="nav-actions">
             <div className="nav-icon">
-              <Search size={18} /> Search
+              <Link to="/">
+                <Search size={18} /> Search
+              </Link>
             </div>
             <div className="nav-icon">
-              <Camera size={18} /> My Photos
+              <Link to="/myPhotos">
+                <Camera size={18} /> My Photos
+              </Link>
             </div>
           </div>
         </nav>
