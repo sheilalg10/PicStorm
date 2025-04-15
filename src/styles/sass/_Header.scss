@@ -55,7 +55,13 @@
           transition: opacity 0.2s ease;
           font-family: $f_Dongle;
           font-size: 1.4rem;
+          text-decoration: none;
+          color: white;
         }
+      }
+      .nav-icon:hover {
+        opacity: 0.85;
+        color: #111;
       }
     }
 
@@ -72,10 +78,5 @@
         color: #111;
       }
     }
-  }
-
-  .nav-icon:hover {
-    opacity: 0.85;
-    color: #111;
   }
 }

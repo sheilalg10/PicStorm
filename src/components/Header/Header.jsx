@@ -22,13 +22,13 @@ const Header = () => {
             PicStorm
           </div>
           <div className="nav-actions">
-            <div className="nav-icon">
-              <Link to="/">
+            <div>
+              <Link className="nav-icon" to="/">
                 <Search size={18} /> Search
               </Link>
             </div>
-            <div className="nav-icon">
-              <Link to="/myPhotos">
+            <div>
+              <Link className="nav-icon" to="/myPhotos">
                 <Camera size={18} /> My Photos
               </Link>
             </div>

@@ -56,7 +56,12 @@
           cursor: pointer;
           transition: opacity 0.2s ease;
           font-family: Dongle;
-          font-size: 1.4rem; }
+          font-size: 1.4rem;
+          text-decoration: none;
+          color: white; }
+      .header-container .header-content .navbar .nav-icon:hover {
+        opacity: 0.85;
+        color: #111; }
     .header-container .header-content .wave-text {
       text-align: left;
       margin-bottom: 4em;
@@ -67,9 +72,6 @@
         font-weight: 600;
         margin: 0;
         color: #111; }
-  .header-container .nav-icon:hover {
-    opacity: 0.85;
-    color: #111; }
 
 /* --- CONTENEDOR GENERAL --- */
 .gallery-wrapper {
@@ -111,6 +113,26 @@
 
 .search-bar button:hover {
   background-color: #e68700; }
+
+/* --- TAGS --- */
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem; }
+  .tags-container .tag-button {
+    background: #f3f3f3;
+    border: none;
+    border-radius: 20px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s; }
+
+.tag-button:hover {
+  background: #dcdcdc; }
 
 /* --- GALERÍA TIPO MASONRY --- */
 .gallery-grid {

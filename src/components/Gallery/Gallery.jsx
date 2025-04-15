@@ -27,6 +27,8 @@ const PicStormGallery = () => {
     }
   };
 
+  const popularTags = ["city", "nature", "coffee", "sea", "football"];
+
   return (
     <div className="gallery-wrapper">
       <form onSubmit={handleSearch} className="search-bar">
@@ -40,6 +42,22 @@ const PicStormGallery = () => {
           <Search size={16} />
         </button>
       </form>
+
+      <div className="tags-container">
+        {popularTags.map((tag) => (
+          <button
+            key={tag}
+            className="tag-button"
+            onClick={() => {
+              setSearchInput(tag); // actualiza el input
+              dispatch(setQuery(tag)); // dispara búsqueda con el tag
+              dispatch(setPage(1)); // vuelve a página 1
+            }}
+          >
+            #{tag}
+          </button>
+        ))}
+      </div>
 
       {status === "loading" && <p>Loading photos...</p>}
       {status === "failed" && <p>Error: {error}</p>}
