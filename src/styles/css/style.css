@@ -313,8 +313,18 @@
   max-width: 90vw;
   max-height: 90vh;
   display: flex;
-  flex-direction: column;
   position: relative; }
+
+/* ORIENTACIÓN CORRECTA */
+.modal-horizontal {
+  /* Imagen más ancha que alta => layout horizontal */
+  flex-direction: row;
+  gap: 1rem;
+  align-items: stretch; }
+
+.modal-vertical {
+  /* Imagen más alta que ancha => layout vertical */
+  flex-direction: column; }
 
 .close-button {
   position: absolute;
@@ -326,7 +336,8 @@
   z-index: 2; }
 
 .modal-photo-container {
-  position: relative; }
+  position: relative;
+  flex: 1; }
 
 .modal-image {
   width: 100%;
@@ -343,8 +354,7 @@
   background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent 50%);
   color: white;
   padding: 1rem;
-  pointer-events: none;
-  /* prevents blocking img drag */ }
+  pointer-events: none; }
 
 .photo-description,
 .photo-description-edit {
@@ -365,6 +375,25 @@
   align-items: center;
   gap: 0.25rem;
   cursor: pointer; }
+
+.edit-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  pointer-events: all; }
+
+.save-button {
+  align-self: flex-end;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem; }
+
+.save-button:hover {
+  background: rgba(255, 255, 255, 0.35); }
 
 .edit-icon {
   margin-left: 0.5rem; }
@@ -387,5 +416,52 @@
 .modal-info {
   padding: 1rem;
   font-size: 0.9rem; }
+
+/* ✅ RESPONSIVE PARA MÓVILES */
+@media (max-width: 768px) {
+  .modal-wrapper {
+    flex-direction: column !important;
+    width: 95vw;
+    height: auto;
+    max-height: 95vh; }
+
+  .modal-image {
+    width: 100%;
+    height: auto;
+    max-height: 40vh;
+    object-fit: cover; }
+
+  .photo-overlay {
+    padding: 0.75rem; }
+
+  .photo-description,
+  .photo-description-edit {
+    font-size: 0.9rem;
+    padding: 0.4rem; }
+
+  .edit-container {
+    gap: 0.4rem; }
+
+  .save-button {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.6rem; }
+
+  .photo-info-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem; }
+
+  .photo-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem; }
+
+  .modal-info {
+    font-size: 0.85rem;
+    padding: 0.75rem; }
+
+  .close-button {
+    top: 0.5rem;
+    right: 0.5rem; } }
 
 /*# sourceMappingURL=style.css.map */

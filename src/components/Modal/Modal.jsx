@@ -9,10 +9,21 @@ const Modal = ({ photo, onClose, onUpdateDescription, onRemoveFavorite }) => {
     photo.description || photo.alt_description || ""
   );
   const [isEditing, setIsEditing] = useState(false);
+  const isHorizontal = photo.width <= photo.height;
+
+  const handleSave = () => {
+    setIsEditing(false);
+    onUpdateDescription(photo.id, description);
+  };
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-wrapper" onClick={(e) => e.stopPropagation()}>
+      <div
+        className={`modal-wrapper ${
+          isHorizontal ? "modal-horizontal" : "modal-vertical"
+        }`}
+        onClick={(e) => e.stopPropagation()}
+      >
         <button className="close-button" onClick={onClose}>
           <X />
         </button>
@@ -26,15 +37,22 @@ const Modal = ({ photo, onClose, onUpdateDescription, onRemoveFavorite }) => {
 
           <div className="photo-overlay">
             {isEditing ? (
-              <textarea
-                className="photo-description-edit"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                onBlur={() => {
-                  setIsEditing(false);
-                  onUpdateDescription(photo.id, description);
-                }}
-              />
+              <div className="edit-container">
+                <textarea
+                  className="photo-description-edit"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && !e.shiftKey) {
+                      e.preventDefault();
+                      handleSave();
+                    }
+                  }}
+                />
+                <button className="save-button" onClick={handleSave}>
+                  Guardar
+                </button>
+              </div>
             ) : (
               <p
                 className="photo-description"

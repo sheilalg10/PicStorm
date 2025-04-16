@@ -1,10 +1,24 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Modal from "../Modal/Modal";
 import { useState } from "react";
+import {
+  removeFromFavorites,
+  updateDescription,
+} from "../../features/favoritesSlice";
 
 const Favorites = () => {
   const favorites = useSelector((state) => state.favorites.items);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const dispatch = useDispatch();
+
+  const handleUpdateDescription = (id, newDescription) => {
+    dispatch(updateDescription({ id, newDescription }));
+  };
+
+  const handleRemoveFavorite = (id) => {
+    dispatch(removeFromFavorites(id));
+    setSelectedPhoto(null);
+  };
 
   return (
     <div className="gallery-grid">
@@ -17,12 +31,19 @@ const Favorites = () => {
               src={photo.urls.small}
               alt={photo.alt_description || "Photo"}
               onClick={() => setSelectedPhoto(photo)}
-              style={{cursor: "pointer"}}
+              style={{ cursor: "pointer" }}
             />
           </div>
         ))
       )}
-      <Modal photo={selectedPhoto} onClose={() => setSelectedPhoto(null)}/>
+      {selectedPhoto && (
+        <Modal
+          photo={selectedPhoto}
+          onClose={() => setSelectedPhoto(null)}
+          onUpdateDescription={handleUpdateDescription}
+          onRemoveFavorite={handleRemoveFavorite}
+        />
+      )}
     </div>
   );
 };

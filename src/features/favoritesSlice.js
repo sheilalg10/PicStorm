@@ -29,8 +29,16 @@ const favoritesSlice = createSlice({
       state.items = state.items.filter((photo) => photo.id !== action.payload);
       localStorage.setItem("favorites", JSON.stringify(state.items));
     },
+    updateDescription: (state, action) => {
+      const { id, newDescription } = action.payload;
+      const favorite = state.items.find((photo) => photo.id === id);
+      if (favorite) {
+        favorite.description = newDescription; // Actualiza la descripción
+        localStorage.setItem("favorites", JSON.stringify(state.items)); // Actualiza localStorage
+      }
+    },
   },
 });
 
-export const { addToFavorites, removeFromFavorites } = favoritesSlice.actions;
+export const { addToFavorites, removeFromFavorites, updateDescription } = favoritesSlice.actions;
 export default favoritesSlice.reducer;
