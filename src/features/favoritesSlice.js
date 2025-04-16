@@ -14,8 +14,14 @@ const favoritesSlice = createSlice({
       const exists = state.items.some(
         (photo) => photo.id === action.payload.id
       );
+
       if (!exists) {
-        state.items.push(action.payload);
+        const newPhoto = {
+          ...action.payload,
+          dateAdded: new Date().toISOString(),
+        };
+
+        state.items.push(newPhoto);
         localStorage.setItem("favorites", JSON.stringify(state.items));
       }
     },

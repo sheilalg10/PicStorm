@@ -1,7 +1,10 @@
 import { useSelector } from "react-redux";
+import Modal from "../Modal/Modal";
+import { useState } from "react";
 
 const Favorites = () => {
   const favorites = useSelector((state) => state.favorites.items);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   return (
     <div className="gallery-grid">
@@ -13,10 +16,13 @@ const Favorites = () => {
             <img
               src={photo.urls.small}
               alt={photo.alt_description || "Photo"}
+              onClick={() => setSelectedPhoto(photo)}
+              style={{cursor: "pointer"}}
             />
           </div>
         ))
       )}
+      <Modal photo={selectedPhoto} onClose={() => setSelectedPhoto(null)}/>
     </div>
   );
 };

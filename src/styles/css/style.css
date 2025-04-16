@@ -297,4 +297,95 @@
   opacity: 0.5;
   cursor: not-allowed; }
 
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; }
+
+.modal-wrapper {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  position: relative; }
+
+.close-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 2; }
+
+.modal-photo-container {
+  position: relative; }
+
+.modal-image {
+  width: 100%;
+  max-height: 60vh;
+  object-fit: cover;
+  display: block; }
+
+.photo-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent 50%);
+  color: white;
+  padding: 1rem;
+  pointer-events: none;
+  /* prevents blocking img drag */ }
+
+.photo-description,
+.photo-description-edit {
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-align: center;
+  pointer-events: all;
+  width: 100%;
+  resize: none; }
+
+.photo-description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer; }
+
+.edit-icon {
+  margin-left: 0.5rem; }
+
+.photo-info-bar {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: all; }
+
+.photo-actions button,
+.photo-actions a {
+  background: none;
+  border: none;
+  color: white;
+  margin-left: 0.5rem;
+  cursor: pointer; }
+
+.modal-info {
+  padding: 1rem;
+  font-size: 0.9rem; }
+
 /*# sourceMappingURL=style.css.map */
