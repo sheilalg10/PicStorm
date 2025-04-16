@@ -19,8 +19,9 @@ const Favorites = () => {
     dateFrom: "",
   });
 
-  const [sortField, setSortField] = useState("likes"); // El campo por el cual se ordena
-  const [sortOrder, setSortOrder] = useState("asc"); // Ascendente o Descendente
+  const [sortField, setSortField] = useState("");
+  const [sortOrder, setSortOrder] = useState("");
+  const [showSelect, setShowSelect] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -87,21 +88,19 @@ const Favorites = () => {
         </div>
 
         {/* Contenedor para el filtro */}
-        <div className="filter-container">
-          <div className="filter-label">
-            <Funnel className="filter-icon" /> Filter
-          </div>
-          
-          {/* Select para ordenar las fotos */}
+        <div className="filter-select-wrapper">
           <select
-            className="filter-select"
-            value={`${sortField}_${sortOrder}`}
+            className={`filter-select ${showSelect ? "visible" : ""}`}
+            value={sortField && sortOrder ? `${sortField}_${sortOrder}` : ""}
             onChange={(e) => {
               const [field, order] = e.target.value.split("_");
               setSortField(field);
               setSortOrder(order);
             }}
           >
+            <option value="" disabled>
+              Filter
+            </option>
             <option value="likes_asc">Likes Ascendente</option>
             <option value="likes_desc">Likes Descendente</option>
             <option value="width_asc">Width Ascendente</option>
@@ -111,6 +110,11 @@ const Favorites = () => {
             <option value="importedAt_asc">Fecha Ascendente</option>
             <option value="importedAt_desc">Fecha Descendente</option>
           </select>
+          <Funnel
+            size={18}
+            className="filter-icon"
+            onClick={() => setShowSelect((prev) => !prev)}
+          />
         </div>
       </div>
 
