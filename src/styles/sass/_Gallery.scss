@@ -162,14 +162,11 @@
   transition: background-color 0.2s ease;
 }
 
-
-/* --- Estilos del icono --- */
 .icon__download {
   transition: color 0.3s ease;
   cursor: pointer;
 }
 
-/* Hover: rojo */
 .icon__download:hover {
   color: rgb(0, 213, 255);
 }
@@ -200,7 +197,6 @@
   cursor: pointer;
 }
 
-/* Likes contador */
 .likes {
   background: rgba(0, 0, 0, 0.6);
   color: white;
@@ -212,7 +208,6 @@
   gap: 4px;
 }
 
-/* --- ICONOS RESPONSIVE: MOBILE SIEMPRE VISIBLES / DESKTOP SOLO CON HOVER --- */
 .top-icons,
 .bottom-icons {
   opacity: 0;
@@ -241,7 +236,6 @@
   flex-wrap: wrap;
   margin: 2rem 0;
   gap: 0.5rem;
-  border: solid black;
 }
 
 .pagination button {

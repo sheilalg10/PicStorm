@@ -211,12 +211,10 @@
   cursor: pointer;
   transition: background-color 0.2s ease; }
 
-/* --- Estilos del icono --- */
 .icon__download {
   transition: color 0.3s ease;
   cursor: pointer; }
 
-/* Hover: rojo */
 .icon__download:hover {
   color: #00d5ff; }
 
@@ -240,7 +238,6 @@
 .icon-button .icon__heart {
   cursor: pointer; }
 
-/* Likes contador */
 .likes {
   background: rgba(0, 0, 0, 0.6);
   color: white;
@@ -251,7 +248,6 @@
   align-items: center;
   gap: 4px; }
 
-/* --- ICONOS RESPONSIVE: MOBILE SIEMPRE VISIBLES / DESKTOP SOLO CON HOVER --- */
 .top-icons,
 .bottom-icons {
   opacity: 0;
@@ -272,8 +268,7 @@
   align-items: center;
   flex-wrap: wrap;
   margin: 2rem 0;
-  gap: 0.5rem;
-  border: solid black; }
+  gap: 0.5rem; }
 
 .pagination button {
   padding: 0.5rem 0.75rem;
@@ -297,7 +292,6 @@
   opacity: 0.5;
   cursor: not-allowed; }
 
-/* ---------- ESTILO BASE ---------- */
 .favorites-container {
   padding: 2rem;
   max-width: 1440px;
@@ -339,8 +333,7 @@
   font-weight: 600;
   cursor: pointer;
   font-family: sans-serif;
-  padding-right: 30px;
-  /* espacio para el ícono */ }
+  padding-right: 30px; }
 
 .filter-icon {
   position: absolute;
@@ -369,7 +362,6 @@
   object-fit: cover;
   display: block; }
 
-/* Versión móvil del header */
 @media (max-width: 768px) {
   .favorites-header {
     display: flex;
