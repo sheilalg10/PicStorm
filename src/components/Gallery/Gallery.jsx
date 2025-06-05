@@ -16,11 +16,11 @@ const PicStormGallery = () => {
   const favorites = useSelector((state) => state.favorites.items);
 
   const [searchInput, setSearchInput] = useState(query);
+  const [activeTag, setActiveTag] = useState(null);
 
   useEffect(() => {
     dispatch(fetchPhotos({ query, page }));
   }, [dispatch, query, page]);
-
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -35,8 +35,24 @@ const PicStormGallery = () => {
   };
 
   const popularTags = ["city", "nature", "coffee", "sea", "football"];
-  const [activeTag, setActiveTag] = useState(null);
-  const [downloaded, setDownloaded] = useState(false);
+
+  const handleDownload = async (photo) => {
+    try {
+      const imageUrl = photo.urls.full;
+      const response = await fetch(imageUrl);
+      const blob = await response.blob();
+
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `${photo.id}.jpg`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(link.href);
+    } catch (error) {
+      console.error("Error al descargar la imagen:", error);
+    }
+  };
 
   return (
     <div className="gallery-wrapper">
@@ -112,15 +128,13 @@ const PicStormGallery = () => {
                   <ThumbsUp size={14} />
                 </div>
 
-                <a
-                  href={`${photo.links.download}?force=true`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
                   className="icon-button"
-                  onClick={() => setDownloaded(true)}
+                  title="Download"
+                  onClick={() => handleDownload(photo)}
                 >
                   <Download size={16} className={"icon__download"} />
-                </a>
+                </button>
               </div>
             </div>
           );

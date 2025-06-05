@@ -16,6 +16,24 @@ const Modal = ({ photo, onClose, onUpdateDescription, onRemoveFavorite }) => {
     onUpdateDescription(photo.id, description);
   };
 
+  const handleDownload = async () => {
+  try {
+    const imageUrl = photo.urls.full; // URL directa a la imagen
+    const response = await fetch(imageUrl);
+    const blob = await response.blob();
+
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `${photo.id}.jpg`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(link.href);
+  } catch (error) {
+    console.error("Error al descargar la imagen:", error);
+  }
+};
+
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div
@@ -65,7 +83,7 @@ const Modal = ({ photo, onClose, onUpdateDescription, onRemoveFavorite }) => {
 
             <div className="photo-info-bar">
               <span className="likes">
-                {photo.likes} <ThumbsUp size={14} />
+                {photo.likes} <ThumbsUp size={18} />
               </span>
 
               <div className="photo-actions">
@@ -73,17 +91,12 @@ const Modal = ({ photo, onClose, onUpdateDescription, onRemoveFavorite }) => {
                   onClick={() => onRemoveFavorite(photo.id)}
                   title="Remove"
                 >
-                  <Trash2 size={16} />
+                  <Trash2 size={20} className="trash"/>
                 </button>
 
-                <a
-                  href={`${photo.links.download}?force=true`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="Download"
-                >
-                  <Download size={16} />
-                </a>
+                <button onClick={handleDownload} title="Download">
+                  <Download size={20} className="download"/>
+                </button>
               </div>
             </div>
           </div>

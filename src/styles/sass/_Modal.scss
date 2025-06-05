@@ -42,6 +42,10 @@
   z-index: 2;
 }
 
+.close-button:hover {
+  color: red;
+}
+
 .modal-photo-container {
   position: relative;
   flex: 1;
@@ -122,6 +126,10 @@
   pointer-events: all;
 }
 
+.likes{
+  font-size: 1.2rem;
+}
+
 .photo-actions button,
 .photo-actions a {
   background: none;
@@ -129,6 +137,14 @@
   color: white;
   margin-left: 0.5rem;
   cursor: pointer;
+}
+
+.trash:hover {
+  color: red;
+}
+
+.download:hover {
+  color: #3ac6f2;
 }
 
 .modal-info {
