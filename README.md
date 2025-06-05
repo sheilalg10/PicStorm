@@ -37,5 +37,6 @@
 git clone https://github.com/sheilalg10/Picstorm.git
 cd Picstorm
 
+```
 ---
 ✍️ **Autor:** [Sheila Lara García](https://github.com/sheilalg10)
