@@ -28,12 +28,12 @@
 }
 
 .search-bar input:focus {
-  border-color: #ff9900;
+  border-color: #3ac6f2;
 }
 
 .search-bar button {
-  padding: 0 1rem;
-  background-color: #ff9900;
+  padding: 0.75rem 1rem;
+  background-color: #3ac6f2;
   color: white;
   border: none;
   border-radius: 0 999px 999px 0;
@@ -42,7 +42,7 @@
 }
 
 .search-bar button:hover {
-  background-color: #e68700;
+  background-color: #027899;
 }
 
 /* --- TAGS --- */
@@ -59,10 +59,11 @@
 .tag-button {
   border: none;
   border-radius: 20px;
-  padding: 0.3rem 0.8rem;
-  font-size: 0.9rem;
+  padding: 0 0.8rem;
+  font-size: 1.7rem;
   cursor: pointer;
   transition: background 0.2s;
+  font-family: $f_Dongle;
 }
 
 .tag-button:hover {
@@ -72,7 +73,7 @@
 }
 
 .tag-button.active {
-  background-color: #3b82f6; /* azul */
+  background-color: #3b82f6;
   color: white;
   border: none;
   border-radius: 20px;
@@ -254,7 +255,7 @@
 }
 
 .pagination button.active {
-  background-color: #ff9900;
+  background-color:#3ac6f2;
   color: white;
   font-weight: bold;
 }
