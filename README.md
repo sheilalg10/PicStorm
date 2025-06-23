@@ -4,12 +4,6 @@
 
 ---
 
-## 🌐 Demo
-
-🔗 [https://pic-storm.vercel.app/](https://pic-storm.vercel.app/)
-
----
-
 ## 🖼️ Características principales
 
 - 🧭 Explora imágenes por categorías 
